@@ -2,13 +2,13 @@ var fs = require('fs');
 var yaml = require('js-yaml');
 
 exports.onMessageReceived = (function Version(bot, doc, user, userID, channelID, message, event) {
-   require('./../exports.js').registerCmd(['setprefix <new>'], 'Changes the prefix to the given set of characters..');
-  
+  require('./../exports.js').registerCmd(['setprefix <new>'], 'Changes the prefix to the given set of characters..');
+
   if (message === undefined) {
     return;
   }
   if (message.startsWith(doc.prefix + "setprefix ")) {
-     var tried = message.replace(doc.prefix + "setprefix ", "");
+    var tried = message.replace(doc.prefix + "setprefix ", "");
     if (tried === doc.prefix) {
       bot.sendMessage({
         to: doc.logchannel,
