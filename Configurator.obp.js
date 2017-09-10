@@ -27,7 +27,7 @@ exports.onMessageReceived = (function Version(bot, doc, user, userID, channelID,
         to: channelID,
         message: "Changed the prefix from `" + doc.prefix + "` to `" + tried + "`."
       });
-      doc.prefix = message.split(" ")[1]
+      doc.prefix = tried;
 
       fs.writeFile(__dirname + '/../config.yaml', yaml.safeDump(doc));
     }
