@@ -8,23 +8,24 @@ exports.onMessageReceived = (function Version(bot, doc, user, userID, channelID,
     return;
   }
   if (message.startsWith(doc.prefix + "setprefix ")) {
-    if (message.split(" ")[1] === doc.prefix) {
+     var tried = message.replace(doc.prefix + "setprefix ", "");
+    if (tried === doc.prefix) {
       bot.sendMessage({
         to: doc.logchannel,
-        message: "<@" + userID + "> tried to change the prefix to `" + message.split(" ")[1] + "`, but it was already using the prefix they were trying to set it to."
+        message: "<@" + userID + "> tried to change the prefix to `" + tried + "`, but it was already using the prefix they were trying to set it to."
       });
       bot.sendMessage({
         to: channelID,
-        message: "`" + message.split(" ")[1] + "` is already the prefix!"
+        message: "`" + tried + "` is already the prefix!"
       });
     } else {
       bot.sendMessage({
         to: doc.logchannel,
-        message: "<@" + userID + "> changed the prefix to `" + message.split(" ")[1] + "`."
+        message: "<@" + userID + "> changed the prefix to `" + tried + "`."
       });
       bot.sendMessage({
         to: channelID,
-        message: "Changed the prefix from `" + doc.prefix + "` to `" + message.split(" ")[1] + "`."
+        message: "Changed the prefix from `" + doc.prefix + "` to `" + tried + "`."
       });
       doc.prefix = message.split(" ")[1]
 
